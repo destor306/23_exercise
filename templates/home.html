@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Blogly Recent Post{% endblock %}
+
+{% block content %}
+    <h1>All Users</h1>
+    <ul>
+        {% for post in posts %}
+        <h2>{{post.title}}</h2>
+        <h4>{{post.content}}</h4>
+        <p>{{post.created_at}}</p>        
+        {% endfor %}
+    </ul>
+    <a href="/users"><button>All Users</button></a>
+{% endblock %}
