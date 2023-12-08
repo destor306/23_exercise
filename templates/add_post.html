@@ -4,7 +4,9 @@
 
 {%block content%}
     <h1>Add Post for {{user.full_name}}</h1>
+    
     <form action="/users/{{user.id}}/posts/new" method="post">
+        <div>
         <label for="title">Title</label>
         <br>
         <input type="text" id="title" name="title">
@@ -13,15 +15,22 @@
         <label for="post_content">Post Content</label>
         <br>
         <input type="text" id="post_content" name="post_content">
-        
-        
+    </div>
+    <div>
+        {%for tag in tags%}
+        <input type="checkbox" value="{{tag.id}}" id="tag_{{tag.id}}" name="tags">
+        <label for="tag_{{tag.id}}">{{tag.name}}</label>
+        {%endfor%}  
+    </div>
+    <div>
         <button class="btn btn-primary btn-sm"
               formaction="/users/{{ user.id }}/"
               formmethod="GET">Cancel
-      </button>
-      <button class="btn btn-danger btn-sm"
-              formaction="/users/{{ user.id }}/posts/new"
-              formmethod="POST">Add
-      </button>
+        </button>
+        <button class="btn btn-danger btn-sm"
+                formaction="/users/{{ user.id }}/posts/new"
+                formmethod="POST">Add
+        </button>
+    </div>
     </form>
 {%endblock%}

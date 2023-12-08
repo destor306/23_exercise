@@ -3,13 +3,20 @@
 {% block title %}Blogly Recent Post{% endblock %}
 
 {% block content %}
-    <h1>All Users</h1>
+    <h1>All Posts</h1>
     <ul>
         {% for post in posts %}
         <h2>{{post.title}}</h2>
         <h4>{{post.content}}</h4>
-        <p>{{post.created_at}}</p>        
+        <p>{{post.created_at}}</p>       
+        {%if post.tags%}
+        <b>Tags:</b>
+        {%for tag in post.tags%}
+            <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+        {%endfor%}
+        {%endif%}
+         
         {% endfor %}
     </ul>
-    <a href="/users"><button>All Users</button></a>
+    <a href="/users"><button>All Posts</button></a>
 {% endblock %}
